@@ -7,5 +7,14 @@
 - 降采样（Voxel Grid Downsampling、Farthest Point Sampling、Normal Space Sampling、S-NET）
 - 上采样（Bilateral Filter）
 
-主要做了 PCA、Voxel Grid Downsampling 的代码实现  [lesson1](./lesson1)
+# [lesson1](./lesson1)
+- 主要做了 PCA
+- Voxel Grid DownSampling
+
+# [lesson2](./lesson2)
+- BST
+    - 二叉树插入
+    - 中序、前序、后序遍历
+    - 递归查找、循环查找
+    - 1NN 最临近搜索（没写出来）
 
