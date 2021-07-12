@@ -75,27 +75,31 @@ def search_iterative(root: Node, key):
 
 
 # 1NN 最邻近搜索
-def search_1nn(root: Node, key):
+def search_1nn(root: Node, key, worst_distance=float('inf')):
     if root is None or root.key == key:
         return root
-    worst_distance = math.fabs(key - root.key)
+    value = math.fabs(key - root.key)
+    worst_distance = value if value < worst_distance else worst_distance
     if key < root.key:
         # 遍历左子树
-        root_l = search_1nn(root.left, key)
-        worst_distance_l = math.fabs(key - root_l.key)
-        if worst_distance_l < worst_distance:
-            worst_distance = worst_distance_l
-            return search_1nn(root.right, key)
+        if math.fabs(key - root.key) < worst_distance:
+            if root.right is None:
+                return root
+            return search_1nn(root.right, key, worst_distance)
         else:
-            return root_l
+            if root.left is None:
+                return root
+            return search_1nn(root.left, key, worst_distance)
+
     elif key > root.key:
-        # 遍历右子树
-        root_r = search_1nn(root.right, key)
-        worst_distance_l = math.fabs(key - root_r.key)
-        if worst_distance < worst_distance_l:
-            return search_1nn(root.left, key)
+        if math.fabs(key - root.key) < worst_distance:
+            if root.left is None:
+                return root
+            return search_1nn(root.left, key, worst_distance)
         else:
-            return root_r
+            if root.right is None:
+                return root
+            return search_1nn(root.right, key, worst_distance)
 
 
 def main():
@@ -104,7 +108,7 @@ def main():
     radius = 2.0
     data = np.random.permutation(db_size).tolist()
     # 临近搜索把 2 删掉
-    data.remove(2)
+    print(data)
     root = None
     for i, point in enumerate(data):
         root = insert(root, point, i)
@@ -120,7 +124,7 @@ def main():
     # print(value)
 
     # 1NN 最邻近搜索
-    value = search_1nn(root, 2)
+    value = search_1nn(root, 11)
     print(value)
 
 
