@@ -19,3 +19,8 @@
     - 1NN 最临近搜索
     - kNN 最邻近搜索
     - radius NN 最邻近搜索
+  
+- KDTree （二维）
+    - KD树构建
+    - kNN 最邻近搜索
+    - radius 最邻近搜索
