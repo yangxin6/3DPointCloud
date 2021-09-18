@@ -129,27 +129,28 @@ def voxel_filter_hash(point_cloud, leaf_size):
 
 # In[8]:
 
+def main():
+    # # 从ModelNet数据集文件夹中自动索引路径，加载点云
 
-# # 从ModelNet数据集文件夹中自动索引路径，加载点云
+    # 加载自己的点云文件
+    point_cloud_raw = np.genfromtxt(r"./car_0005.txt", delimiter=",")  #为 xyz的 N*3矩阵
+    point_cloud_raw = DataFrame(point_cloud_raw[:, 0:3])  # 选取每一列 的 第0个元素到第二个元素   [0,3)
+    point_cloud_raw.columns = ['x', 'y', 'z']  # 给选取到的数据 附上标题
+    point_cloud_pynt = PyntCloud(point_cloud_raw)  # 将points的数据 存到结构体中
+    point_cloud_o3d = point_cloud_pynt.to_instance("open3d", mesh=False)  # 实例化
+    # o3d.visualization.draw_geometries([point_cloud_o3d]) # 显示原始点云
 
-# 加载自己的点云文件
-point_cloud_raw = np.genfromtxt(r"./car_0005.txt", delimiter=",")  #为 xyz的 N*3矩阵
-point_cloud_raw = DataFrame(point_cloud_raw[:, 0:3])  # 选取每一列 的 第0个元素到第二个元素   [0,3)
-point_cloud_raw.columns = ['x', 'y', 'z']  # 给选取到的数据 附上标题
-point_cloud_pynt = PyntCloud(point_cloud_raw)  # 将points的数据 存到结构体中
-point_cloud_o3d = point_cloud_pynt.to_instance("open3d", mesh=False)  # 实例化
-# o3d.visualization.draw_geometries([point_cloud_o3d]) # 显示原始点云
-
-# 调用voxel滤波函数，实现滤波
-# filtered_cloud = voxel_filter(point_cloud_pynt.points, 20, "random")
-filtered_cloud = voxel_filter_hash(point_cloud_pynt.points, 0.05)
-point_cloud_o3d.points = o3d.utility.Vector3dVector(filtered_cloud)
-# 显示滤波后的点云
-o3d.visualization.draw_geometries([point_cloud_o3d])
+    # 调用voxel滤波函数，实现滤波
+    # filtered_cloud = voxel_filter(point_cloud_pynt.points, 20, "random")
+    filtered_cloud = voxel_filter_hash(point_cloud_pynt.points, 0.05)
+    point_cloud_o3d.points = o3d.utility.Vector3dVector(filtered_cloud)
+    # 显示滤波后的点云
+    o3d.visualization.draw_geometries([point_cloud_o3d])
 
 
 # In[ ]:
 
 
-
+if __name__ == '__main__':
+    main()
 

@@ -30,15 +30,15 @@
     - kNN 最邻近搜索
     - radius 最邻近搜索
     - radius faster 最邻近搜索
-  
-# [lesson3](./lesson3))
+
+# [lesson3](./lesson3)
 
 ## [KMeans](./lesson3/KMeans.py)
 1. 随机选取 K 个中心点
 2. 计算每个点都属于哪一个类
 3. 重新计算各个中心点的位置
 4. 迭代 2 3 步
-  
+
 
 ### [KMeans++](./lesson3/KMeans_kpp.py)
 目的： 使得距离所有簇中心越远的点被选中的概率越大，离得越近被随机到的概率越小。
@@ -49,7 +49,7 @@
     最后，按照**轮盘法**选择出下一个聚类中心
 3. 重复第2步直到选出共K个聚类中心；
          之后与经典KMeans中2 3 4 步相同
-   
+
 #### [轮盘法](./lesson3/RWS.py)：
 
 根据权重来确定概率：权重越大，被选择的几率越高
@@ -60,5 +60,17 @@
 - https://bbs.huaweicloud.com/blogs/detail/155736
 
 
-# GMM
-1. 初始化均值 
+## GMM
+![GMM](./img/GMM.png)
+
+## Spectral Clustering [谱聚类](./lesson3/Spectral.py)
+
+![Spectral](./img/Spectral.jpeg)
+
+
+
+# lesson4
+
+- 从激光雷达点移除地面，将地面可视化为蓝色 [代码](./lesson4/ransac.py)
+- 对剩余点进行聚类，用随机颜色可视化集群  [代码](./lesson4/clustering.py)
+

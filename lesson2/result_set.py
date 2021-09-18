@@ -16,6 +16,7 @@ class KNNResultSet:
         self.count = 0
         self.worst_dist = float('inf')
         self.dist_index_list = []
+        self.output_index = []
         for i in range(capacity):
             self.dist_index_list.append(DistIndex(self.worst_dist, 0))
 
@@ -57,6 +58,13 @@ class KNNResultSet:
         output += 'In total %d comparison operations.' % self.comparison_counter
         return output
 
+    def knn_output_index(self):
+        output = ''
+        for i, dist_index in enumerate(self.dist_index_list):
+            output += '%d - %.2f\n' % (dist_index.index, dist_index.distance)
+            self.output_index.append(dist_index.index)
+        output += 'In total %d comparison operations.' % self.comparison_counter
+        return self.output_index
 
 class RadiusNNResultSet:
     def __init__(self, radius):
