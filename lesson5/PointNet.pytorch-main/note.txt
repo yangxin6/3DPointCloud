@@ -1,0 +1,13 @@
+shapenet
+
+python utils/train_classification.py --dataset "D:\YANG\download\shapenetcore_partanno_segmentation_benchmark_v0" --nepoch="2" --batchSize="16"  --dataset_type "shapenet"
+
+python .\utils\show_cls.py --model="D:\YANG\点云处理\workspace\PointNet.pytorch-main\shapenet\cls\cls_model_1.pth" --dataset "D:\YANG\download\shapenetcore_partanno_segmentation_benchmark_v0" --dataset_type "shapenet" --batchSize="16"
+
+python  .\utils\train_segmentation_shapenet.py --dataset="D:\YANG\download\shapenetcore_partanno_segmentation_benchmark_v0" --nepoch=2 --batchSize="16" --class_choice=Chair
+
+python .\utils\show_seg.py --model="D:\YANG\点云处理\workspace\PointNet.pytorch-main\shapenet\seg\seg_model_Chair_1.pth" --dataset="D:\YANG\download\shapenetcore_partanno_segmentation_benchmark_v0" --class_choice=Chair --idx=0 
+
+
+python utils/train_classification.py --dataset "D:\YANG\download\modelnet40_normal_resampled" --model="D:\YANG\点云处理\workspace\PointNet.pytorch-main\modelnet40\cls1\cls_model_1.pth" --nepoch="10" --batchSize="16" --dataset_type "modelnet40"
+
