@@ -137,11 +137,11 @@ def block_ground_segmentation(data):
 def main():
     # 主函数
     origin_points = read_velodyne_bin("../data/data_object_4/007096.bin")
-    # origin_points_df = DataFrame(origin_points,columns=['x', 'y', 'z'])  # 选取每一列 的 第0个元素到第二个元素   [0,3)
-    # point_cloud_pynt = PyntCloud(origin_points_df)  # 将points的数据 存到结构体中
-    # point_cloud_o3d = point_cloud_pynt.to_instance("open3d", mesh=False)  # 实例化
-    # # 显示原始点云
-    # o3d.visualization.draw_geometries([point_cloud_o3d])
+    origin_points_df = DataFrame(origin_points,columns=['x', 'y', 'z'])  # 选取每一列 的 第0个元素到第二个元素   [0,3)
+    point_cloud_pynt = PyntCloud(origin_points_df)  # 将points的数据 存到结构体中
+    point_cloud_o3d = point_cloud_pynt.to_instance("open3d", mesh=False)  # 实例化
+    # 显示原始点云
+    o3d.visualization.draw_geometries([point_cloud_o3d])
 
     # 点云降采样
     # filtered_points = voxel_filter(point_cloud_pynt.points, 0.05, "centroid")

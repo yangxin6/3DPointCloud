@@ -2,4 +2,8 @@ data
 .DS_Store
 data/*
 .idea
-
+*/.idea
+lesson5/PointNet.pytorch-main/modelnet40/*
+lesson5/PointNet.pytorch-main/modelnet40
+lesson5/PointNet.pytorch-main/shapenet/*
+lesson5/PointNet.pytorch-main/shapenet
